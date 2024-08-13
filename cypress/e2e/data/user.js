@@ -48,10 +48,7 @@ class User {
         }
 
         return putData;
-    }
-
-    
-
+    }    
 }
 
 export default User;

@@ -34,6 +34,18 @@ describe('User Tests', () => {
       })
   })
 
+  it('User Not Found', () => {
+    cy.request({
+      method: 'GET',
+      url: urls + '/v2/user/deneme-user-test',
+      headers: params.headerPayload(),
+      failOnStatusCode: false
+    })
+      .then((response) => {
+        expect(response.status).to.eq(404)
+      })
+  })
+
   it('Update User Info', () => {
     cy.request({
       method: 'PUT',
@@ -48,7 +60,7 @@ describe('User Tests', () => {
   })
 
   it('Delete User', () => {
-    cy.request({ //ilk işlemi ile silinme success ise 200 dönecektir.
+    cy.request({ //ilk silme işlemi ile success ise 200 dönecektir.
       method: 'DELETE',
       url: urls + '/v2/user/ayhanayaz4',
       headers: params.headerPayload()
@@ -59,7 +71,7 @@ describe('User Tests', () => {
       })
 
     cy.request({
-      method: 'DELETE', // ikinci silinme işlemi ile kullanıcının olmadığını doğrulayabiliriz. 404 döner.
+      method: 'DELETE', // ikinci silnme işlemi ile kullanıcının olmadığını doğrulayabiliriz. 404 döner.
       url: urls + '/v2/user/ayhanayaz4',
       headers: params.headerPayload(),
       failOnStatusCode: false
@@ -69,7 +81,7 @@ describe('User Tests', () => {
       })
 
     cy.request({
-      method: 'DELETE', //ilk işlemi ile silinme success ise 200 dönecektir.
+      method: 'DELETE', //ilk silme işlemi ile success ise 200 dönecektir.
       url: urls + '/v2/user/cevdetayaz',
       headers: params.headerPayload()
     })
@@ -79,7 +91,7 @@ describe('User Tests', () => {
       })
 
     cy.request({
-      method: 'DELETE', // ikinci silinme işlemi ile kullanıcının olmadığını doğrulayabiliriz. 404 döner.
+      method: 'DELETE', // ikinci silme işlemi ile kullanıcının olmadığını doğrulayabiliriz. 404 döner.
       url: urls + '/v2/user/cevdetayaz',
       headers: params.headerPayload(),
       failOnStatusCode: false
