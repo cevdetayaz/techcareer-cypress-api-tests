@@ -5,7 +5,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       allureCypress(on, {
-        resultsDir: "./allure-results",
+        //resultsDir: "./allure-results",
       });
     },
   },
